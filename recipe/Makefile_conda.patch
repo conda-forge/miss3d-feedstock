@@ -1,0 +1,11 @@
+--- Makefile.orig	2020-05-28 16:46:04.000000000 +0200
++++ Makefile	2023-05-14 13:21:12.871465946 +0200
+@@ -6,7 +6,7 @@
+ scripts = scripts/run_miss3d scripts/miss3d.csh
+ 
+ version ?= default
+-prefix  ?= /opt/aster/public/miss3d
++prefix  ?= $PREFIX/bin
+ bindir  ?= $(prefix)
+ libdir  ?= $(prefix)/$(version)
+ 

@@ -9,6 +9,9 @@ package:
 source:
   url: https://downloads.sourceforge.net/project/prereq/miss3d-{{ version }}_aster4.tar.gz
   sha256: {{ sha256 }}
+  patches:
+    - Makefile_conda.patch
+    - Makefile.inc.gnu64_conda.patch
 
 build:
   number: 0
