@@ -1,5 +1,5 @@
 --- src/Makefile.inc.gnu64.orig	2020-05-28 16:46:04.000000000 +0200
-+++ src/Makefile.inc.gnu64	2023-05-14 22:00:14.267354081 +0200
++++ src/Makefile.inc.gnu64	2023-05-14 13:19:54.730739954 +0200
 @@ -4,7 +4,7 @@
  
  # defined compiler and options
@@ -18,7 +18,7 @@
 +F90FLAGS = -O2 -fbacktrace -mcmodel=medium -fdefault-double-8 -fdefault-integer-8 -fdefault-real-8 -fallow-argument-mismatch $(FFLAGS)
  
 -LD = gfortran
-+LD = $F90
++LD = $(F90)
  #LDFLAGS = -llapack -lblas -lpthread -static
 -LDFLAGS = -L/usr/lib/atlas-base/atlas -llapack -lblas -Wl,--whole-archive -lpthread -Wl,--no-whole-archive
 +LDFLAGS = -L$(PREFIX)/lib -llapack -lblas -lpthread -lgfortran -lm -ldl -lc
