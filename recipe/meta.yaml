@@ -14,13 +14,13 @@ source:
     - Makefile.inc.gnu64_conda.patch
 
 build:
-  number: 1
-  skip: true  # [osx or win]
+  number: 2
+  skip: true  # [win]
   detect_binary_files_with_prefix: True   
 
 requirements:
   build:
-    - {{ compiler('gfortran') }}  # [linux]
+    - {{ compiler('fortran') }}
   host:
     - make  # [not win]
     - ninja  # [win]
@@ -31,7 +31,7 @@ requirements:
     - libblas
 test:
   commands:
-    - $PREFIX/bin/run_miss3d || true  # [linux]
+    - $PREFIX/bin/run_miss3d || true  # [unix]
 
 about:
   home: https://www.code-aster.org/spip.php?article98
