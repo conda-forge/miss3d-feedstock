@@ -30,7 +30,8 @@ requirements:
     - libblas
 test:
   commands:
-    - $PREFIX/bin/run_miss3d || true  # [unix]
+    - run_miss3d || true  # [unix]
+    - run_miss3d  # [win]
 
 about:
   home: https://www.code-aster.org/spip.php?article98
