@@ -14,7 +14,7 @@ source:
     - Makefile.inc.gnu64_conda.patch
 
 build:
-  number: 2
+  number: 3
   detect_binary_files_with_prefix: True   
 
 requirements:
