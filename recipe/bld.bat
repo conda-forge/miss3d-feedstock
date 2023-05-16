@@ -5,7 +5,7 @@ rem set "LIB=%LIBRARY_LIB%;%LIB%"
 
 copy src\Makefile.inc.gnu64 src\Makefile.inc
 
-mingw32-make prefix=%PREFIX%/bin F90=%fortran_compiler%
+mingw32-make prefix=%PREFIX%/bin F90=%m2w64_fortran_compiler%
 if errorlevel 1 exit 1
 
 mingw32-make install
