@@ -22,7 +22,7 @@ requirements:
     - {{ compiler('fortran') }}
   host:
     - make  # [not win]
-    - nmake  # [win]
+    - m2w64-make  # [win]
     - liblapack
     - libblas
   run:
