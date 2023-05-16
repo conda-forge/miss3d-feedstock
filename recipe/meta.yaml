@@ -14,7 +14,7 @@ source:
     - Makefile.inc.gnu64_conda.patch
 
 build:
-  number: 3
+  number: 4
   detect_binary_files_with_prefix: True   
 
 requirements:
@@ -22,7 +22,7 @@ requirements:
     - {{ compiler('fortran') }}
   host:
     - make  # [not win]
-    - ninja  # [win]
+    - nmake  # [win]
     - liblapack
     - libblas
   run:
