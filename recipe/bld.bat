@@ -5,7 +5,7 @@ rem set "LIB=%LIBRARY_LIB%;%LIB%"
 
 copy src\Makefile.inc.gnu64 src\Makefile.inc
 
-ninja prefix=%PREFIX%/bin F90=%FC%
+ninja prefix=%PREFIX%/bin F90=%fortran_compiler%
 if errorlevel 1 exit 1
 
 ninja install
