@@ -1,0 +1,31 @@
+--- Makefile.orig	Thu May 28 16:46:04 2020
++++ Makefile	Sat Jun  3 13:11:33 2023
+@@ -2,25 +2,22 @@
+ 
+ default: all
+ 
+-ALL = src
+ scripts = scripts/run_miss3d scripts/miss3d.csh
+ 
+ version ?= default
+-prefix  ?= /opt/aster/public/miss3d
++prefix  ?= $(shell echo $$PREFIX | sed --expression "s/\\\\\\\\/\//g")/bin
+ bindir  ?= $(prefix)
+ libdir  ?= $(prefix)/$(version)
+ 
+ all clean distclean:
+-	@for d in $(ALL); do \
+-		(cd $$d && $(MAKE) $@); \
+-	done
++	$(MAKE) -C src
+ 
+ $(bindir) $(libdir):
+ 	mkdir -p $@
+ 
+ install: $(bindir) $(libdir) $(scripts)
+ 	cp -f $(scripts) $(bindir)/
+-	cp -f src/run_miss3d `find . -name '*.x'` $(libdir)/
++	cp -f src/run_miss3d `find . -name '*.x'` $(libdir)/
+ 	if [ -f "$(libdir)/gtaster.x" ]; then ( cd $(libdir)/ ; ln -s gtaster.x gtaster_long.x ) ; fi
+ 	if [ ! -d "$(prefix)/V1_4" ]; then ( cd $(prefix)/ ; ln -s $(version) V1_4 ) ; fi
+ 	if [ ! -d "$(prefix)/V1_5" ]; then ( cd $(prefix)/ ; ln -s $(version) V1_5 ) ; fi
