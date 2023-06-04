@@ -5,7 +5,7 @@
  
  version ?= default
 -prefix  ?= /opt/aster/public/miss3d
-+prefix  ?= $PREFIX/bin
++prefix  ?= $(PREFIX)/bin
  bindir  ?= $(prefix)
  libdir  ?= $(prefix)/$(version)
  
