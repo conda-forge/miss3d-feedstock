@@ -1,0 +1,23 @@
+--- Makefile.orig	Thu May 28 16:46:04 2020
++++ Makefile	Sun Jun  4 10:10:28 2023
+@@ -2,18 +2,15 @@
+ 
+ default: all
+ 
+-ALL = src
+ scripts = scripts/run_miss3d scripts/miss3d.csh
+ 
+ version ?= default
+-prefix  ?= /opt/aster/public/miss3d
++prefix  ?= $(shell echo $$PREFIX | sed --expression "s/\\\\\\\\/\//g")/bin
+ bindir  ?= $(prefix)
+ libdir  ?= $(prefix)/$(version)
+ 
+ all clean distclean:
+-	@for d in $(ALL); do \
+-		(cd $$d && $(MAKE) $@); \
+-	done
++	$(MAKE) -C src
+ 
+ $(bindir) $(libdir):
+ 	mkdir -p $@

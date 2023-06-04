@@ -10,27 +10,33 @@ source:
   url: https://downloads.sourceforge.net/project/prereq/miss3d-{{ version }}_aster4.tar.gz
   sha256: {{ sha256 }}
   patches:
-    - Makefile_conda.patch
-    - Makefile.inc.gnu64_conda.patch
+    - Makefile_conda.patch  # [not win]
+    - Makefile_conda_win.patch  # [win]
+    - Makefile.inc.gnu64_conda.patch  # [not win]
+    - Makefile.inc.gnu64_conda_win.patch  # [win]
 
 build:
-  number: 3
+  number: 4
   detect_binary_files_with_prefix: True   
 
 requirements:
   build:
-    - {{ compiler('fortran') }}
+    - {{ compiler('fortran') }}  # [unix]
+    - {{ compiler('m2w64_fortran') }}  # [win]
   host:
     - make  # [not win]
-    - ninja  # [win]
+    - m2w64-make  # [win]
     - liblapack
     - libblas
+    - m2-base  # [win]
   run:
     - liblapack
     - libblas
 test:
   commands:
-    - $PREFIX/bin/run_miss3d || true  # [unix]
+    - run_miss3d || true  # [unix]
+    - if not exist %PREFIX%\bin\run_miss3d.bat exit 1  # [win]
+    - run_miss3d  # [win]
 
 about:
   home: https://www.code-aster.org/spip.php?article98
