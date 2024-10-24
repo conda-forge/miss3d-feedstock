@@ -24,8 +24,7 @@ requirements:
     - {{ compiler('fortran') }}  # [unix]
     - {{ compiler('m2w64_fortran') }}  # [win]
   host:
-    - make  # [not win]
-    - m2w64-make  # [win]
+    - make
     - liblapack
     - libblas
     - m2-base  # [win]
