@@ -16,13 +16,14 @@ source:
     - Makefile.inc.gnu64_conda_win.patch  # [win]
 
 build:
-  number: 5
+  number: 6
   detect_binary_files_with_prefix: True   
 
 requirements:
   build:
     - {{ compiler('fortran') }}  # [unix]
     - {{ compiler('m2w64_fortran') }}  # [win]
+    - {{ stdlib("c") }}    # [win]
   host:
     - make  # [not win]
     - m2w64-make  # [win]
