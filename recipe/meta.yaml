@@ -16,14 +16,14 @@ source:
     - Makefile.inc.gnu64_conda_win.patch  # [win]
 
 build:
-  number: 6
-  detect_binary_files_with_prefix: True   
+  number: 7
+  detect_binary_files_with_prefix: True
 
 requirements:
   build:
-    - {{ compiler('fortran') }}  # [unix]
-    - {{ compiler('m2w64_fortran') }}  # [win]
-    - {{ stdlib("c") }}    # [win]
+    - {{ stdlib("c") }}
+    - {{ compiler("c") }}
+    - {{ compiler("fortran") }}
   host:
     - make  # [not win]
     - m2w64-make  # [win]
@@ -46,10 +46,10 @@ about:
   license_file: ./LICENSE.txt
   summary: 'MISS, un outil performant en génie parasismique, dynamique des structures et géophysique'
   description: |
-    Soil-Structure Interactions (ISS) and Sol-Fluid-Structure (ISFS) involved in buildings dynamics or in arch dams, 
+    Soil-Structure Interactions (ISS) and Sol-Fluid-Structure (ISFS) involved in buildings dynamics or in arch dams,
     can be resolved with frequency coupling in Code_Aster.
-    MISS3D (called via the Code_Aster command CALC_MISS) 
-    is a code with integral equations (Green functions) and sub-structuring from ECP / LMSSMat .  
+    MISS3D (called via the Code_Aster command CALC_MISS)
+    is a code with integral equations (Green functions) and sub-structuring from ECP / LMSSMat .
   doc_url: https://www.code-aster.org/IMG/UPLOAD/DOC/Telechargement/notice_util_miss3d_v6.4.pdf
 
 extra:
